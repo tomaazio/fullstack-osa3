@@ -24,11 +24,12 @@ const format = (person) => {
   }
 }
 
+
 //RESTUL APIs ----
 
 app.get('/api/persons', (req, res) => {
   Person
-    .find({}, {_v: 0})
+    .find({}, { _v: 0 })
     .then(persons => {
       res.json(persons.map(format))
     })
@@ -46,7 +47,7 @@ app.get('/api/persons/:id', (req, res) => {
     })
     .catch(error => {
       console.log(error)
-      res.status(404).send({error: 'malformatted id'})
+      res.status(404).send({ error: 'malformatted id' })
     })
 })
 
@@ -58,6 +59,7 @@ app.get('/info', (req, res) => {
     })
     .catch(error => {
       console.log(error)
+      res.status(404).end()
     })
 })
 
@@ -69,16 +71,16 @@ app.delete('/api/persons/:id', (req, res) => {
       res.status(204).end()
     })
     .catch(error => {
-      res.status(400).send({error: 'malformatted id'})
+      res.status(400).send({ error: 'malformatted id' })
     })
 })
 
 app.post('/api/persons/', (req, res) => {
   const body = req.body
   if (body.name === undefined) {
-    return res.status(400).json({error: 'name missing'})
+    return res.status(400).json({ error: 'name missing' })
   } else if (body.number === undefined) {
-    return res.status(400).json({error: 'number missing'})
+    return res.status(400).json({ error: 'number missing' })
   }
 
   const person = new Person({
