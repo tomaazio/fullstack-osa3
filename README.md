@@ -1,1 +1,1 @@
-http://amazing-puhelinluettelo.herokuapp.com/
+http://awesomeluettelo.herokuapp.com/
